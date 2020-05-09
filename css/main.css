@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+}
+
+h1 {
+    letter-spacing: 2px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.countdown-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.countdown-item {
+    color: #111;
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    line-height: 30px;
+    margin: 10px;
+    padding-top: 10px;
+    position: relative;
+    width: 100px;
+    height: 100px;
+}
+
+.countdown-item span {
+    color: #333;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.base-timer {
+    position: relative;
+    height: 300px;
+    width: 300px;
+  }
+  
+  /* Removes SVG styling that would hide the time label */
+  .base-timer__circle {
+    fill: none;
+    stroke: none;
+  }
+  
+  /* The SVG path that displays the timer's progress */
+  .base-timer__path-elapsed {
+    stroke-width: 7px;
+    stroke: grey;
+  }
+  .base-timer__label {
+    position: absolute;
+    
+    /* Size should match the parent container */
+    width: 300px;
+    height: 300px;
+    
+    /* Keep the label aligned to the top */
+    top: 0;
+    
+    /* Create a flexible box that centers content vertically and horizontally */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    /* Sort of an arbitrary number; adjust to your liking */
+    font-size: 48px;
+  }
