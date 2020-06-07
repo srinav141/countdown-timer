@@ -45,8 +45,8 @@ h1 {
 
 .base-timer {
     position: relative;
-    height: 300px;
-    width: 300px;
+    height: 30px;
+    width: 30px;
   }
   
   /* Removes SVG styling that would hide the time label */

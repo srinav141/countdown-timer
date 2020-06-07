@@ -5,29 +5,34 @@
     <link rel="stylesheet" type="text/css" href="../css/main.css">
     <title>Countdown Timer</title>
 </head>
+<form action="/submitShow" method="POST">
 
-<body>
-    <h1>Event Countdown Timer</h1>
-    <div style="width: 25%; float:left;">
-        <label for="name">Enter Event Name:</label>
+    <body>
+        <h1>Event Countdown Timer</h1>
+        <div style="width: 25%; float:left;">
+            <label for="name">Enter Event Name:</label>
 
-        <input type="text" id="name" name="name" placeholder="Ex: My Birthday">
-    </div>
-    <div style="width: 25%; float:left;">
-        <label for="meeting">Event Date : </label><input id="date" type="date" value={{.Date}} />
-    </div>
+            <input type="text" id="name" name="name" placeholder="Ex: My Birthday">
+        </div>
+        <div style="width: 25%; float:left;">
+            <label for="meeting">Event Date : </label>
+            <input id="date" type="date" name="date" value={{.Date}} />
+        </div>
 
-    <div>
-        <label for="time">Event Time : </label><input id="time" type="time" value={{.Time}} />
-    </div>
-    <br>
-    <button type="start">START</button>
+        <div>
+            <label for="time">Event Time : </label>
+            <input id="time" type="time" name="time" value={{.Time}} />
+        </div>
+        <br>
+
+        <input type="submit" value="submit" />
+</form>
 
 
-    <!-- <div class="base-timer">
-        <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+<!-- <div class="base-timer">
+        <svg class="base-timer__svg" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg">
             <g class="base-timer__circle">
-                <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45" />
+                <circle class="base-timer__path-elapsed" cx="5" cy="5" r="4" />
             </g>
         </svg>
         <span>
@@ -36,7 +41,7 @@
 
         </span>
     </div> -->
-    <div className="countdown-wrapper">
+<!-- <div className="countdown-wrapper">
 
 
 
@@ -57,7 +62,7 @@
             {seconds}
             <span>seconds</span>
         </div>
-</body>
+    </div>> -->
 </body>
 
 </html>

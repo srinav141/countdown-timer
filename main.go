@@ -36,6 +36,7 @@ func main() {
 		Addr: "127.0.0.1:8080",
 	}
 	http.HandleFunc("/", HomePage)
+	http.HandleFunc("/submitShow", SubmitShow)
 	server.ListenAndServe()
 }
 
