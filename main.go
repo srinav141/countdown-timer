@@ -17,13 +17,10 @@ type PageVars struct {
 func render(w http.ResponseWriter, tmpl string, pageVars PageVars) {
 	tmpl = fmt.Sprintf("templates/%s", tmpl)
 
-	t, err := template.ParseFiles(tmpl)
+	t :=
+		template.Must(template.ParseFiles(tmpl))
 
-	if err != nil {
-		log.Print("tempalte parsing error : ", err)
-	}
-
-	err = t.Execute(w, pageVars)
+	err := t.ExecuteTemplate(w, "home", pageVars)
 
 	if err != nil {
 		log.Print("tempalte executiong error : ", err)
@@ -32,11 +29,16 @@ func render(w http.ResponseWriter, tmpl string, pageVars PageVars) {
 }
 
 func main() {
+	mux := http.NewServeMux()
+	files := http.FileServer(http.Dir("/public"))
+	mux.Handle("/static/", http.StripPrefix("/static/", files))
 	server := http.Server{
-		Addr: "127.0.0.1:8080",
+		Addr:    "127.0.0.1:8080",
+		Handler: mux,
 	}
-	http.HandleFunc("/", HomePage)
-	http.HandleFunc("/submitShow", SubmitShow)
+
+	mux.HandleFunc("/", HomePage)
+	mux.HandleFunc("/submitShow", SubmitShow)
 	server.ListenAndServe()
 }
 

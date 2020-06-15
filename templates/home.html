@@ -1,8 +1,9 @@
+{{ define "home" }}
 <!DOCTYPE html>
 <html>
 
 <head>
-    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" href="..public/css/main.css">
     <title>Countdown Timer</title>
 </head>
 <form action="/submitShow" method="POST">
@@ -12,7 +13,8 @@
         <div style="width: 25%; float:left;">
             <label for="name">Enter Event Name:</label>
 
-            <input type="text" id="name" name="name" placeholder="Ex: My Birthday">
+            <input type="text" id="name" name="name" placeholder="Ex: My Birthday" />
+            <span id="errorname"></span>
         </div>
         <div style="width: 25%; float:left;">
             <label for="meeting">Event Date : </label>
@@ -66,3 +68,4 @@
 </body>
 
 </html>
+{{ end }}
