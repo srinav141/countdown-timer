@@ -8,19 +8,26 @@ import (
 	"time"
 )
 
-//PageVars contains varailbes to display on page
+//PageVars contains variables to display on page
 type PageVars struct {
-	Date string
-	Time string
+	Date  string
+	Time  string
+	Year  int
+	Month int
+	Day   int
+	Hour  int
+	Min   int
+	Secs  int
+	Name  string
 }
 
-func render(w http.ResponseWriter, tmpl string, pageVars PageVars) {
+func render(w http.ResponseWriter, tmpl string, def string, pageVars PageVars) {
 	tmpl = fmt.Sprintf("templates/%s", tmpl)
 
 	t :=
 		template.Must(template.ParseFiles(tmpl))
 
-	err := t.ExecuteTemplate(w, "home", pageVars)
+	err := t.ExecuteTemplate(w, def, pageVars)
 
 	if err != nil {
 		log.Print("tempalte executiong error : ", err)
@@ -50,5 +57,5 @@ func Home(w http.ResponseWriter, r *http.Request) {
 		Date: now.Format("2006-01-02"),
 		Time: now.Format("15:04:05"),
 	}
-	render(w, "home.html", HomePageVars)
+	render(w, "home.html", "home", HomePageVars)
 }
