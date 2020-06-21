@@ -3,6 +3,10 @@
 <html>
 
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=9">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/public/css/main.css">
     <title>Countdown Timer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
@@ -14,14 +18,35 @@
     </style>
 </head>
 
-<body>
-    <label style="color:blue">
-
-        Countdown starts
-
-    </label>
+<body style="font-family: 'Lato', sans-serif;">
     <p id="demo"></p>
-    <label style="color:green">
+    <div>
+        <h1>Countdown</h1>
+        <div className="countdown-wrapper"
+            style="display:flex; align-items: center;justify-content: center;flex-wrap: wrap;">
+            <div className="countdown-item"
+                style="color:#111;display: flex;align-items: center;justify-content: center;flex-direction: column;font-size: 40px;line-height: 30px;margin: 10px;padding-top: 10px;position: relative;width: 100px;height: 100px;">
+                <p id="days"></p>
+                <span style="color: #333;text-transform: uppercase; font-size: 12px;font-weight: 600;"> days</span>
+            </div>
+            <div className="countdown-item"
+                style="color:#111;display: flex;align-items: center;justify-content: center;flex-direction: column;font-size: 40px;line-height: 30px;margin: 10px;padding-top: 10px;position: relative;width: 100px;height: 100px;">
+                <p id="hours"></p>
+                <span style="color: #333;text-transform: uppercase; font-size: 12px;font-weight: 600;">hours</span>
+            </div>
+            <div className="countdown-item"
+                style="color:#111;display: flex;align-items: center;justify-content: center;flex-direction: column;font-size: 40px;line-height: 30px;margin: 10px;padding-top: 10px;position: relative;width: 100px;height: 100px;">
+                <p id="minutes"></p>
+                <span style="color: #333;text-transform: uppercase; font-size: 12px;font-weight: 600;">minutes</span>
+            </div>
+            <div className="countdown-item"
+                style="color:#111;display: flex;align-items: center;justify-content: center;flex-direction: column;font-size: 40px;line-height: 30px;margin: 10px;padding-top: 10px;position: relative;width: 100px;height: 100px;">
+                <p id="seconds"></p>
+                <span style="color: #333;text-transform: uppercase; font-size: 12px;font-weight: 600;">seconds</span>
+            </div>
+        </div>
+    </div>
+    <label style="color:green;text-transform: uppercase;font-size: large;align-items: center;justify-content: center;">
 
         to event {{.Name}}
 
@@ -51,6 +76,11 @@
             // Output the result in an element with id="demo"
             document.getElementById("demo").innerHTML = days + "d " + hours + "h "
                 + minutes + "m " + seconds + "s ";
+            document.getElementById("days").innerHTML = days;
+            document.getElementById("hours").innerHTML = hours;
+            document.getElementById("minutes").innerHTML = minutes;
+            document.getElementById("seconds").innerHTML = seconds;
+
 
             // If the count down is over, write some text 
             if (distance < 0) {
