@@ -5,6 +5,7 @@ import (
 	"html/template"
 	"log"
 	"net/http"
+	"path/filepath"
 	"time"
 )
 
@@ -22,7 +23,8 @@ type PageVars struct {
 }
 
 func render(w http.ResponseWriter, tmpl string, def string, pageVars PageVars) {
-	tmpl = fmt.Sprintf("templates/%s", tmpl)
+
+	tmpl = fmt.Sprintf(filepath.FromSlash("templates/%s"), tmpl)
 
 	t :=
 		template.Must(template.ParseFiles(tmpl))
@@ -37,8 +39,8 @@ func render(w http.ResponseWriter, tmpl string, def string, pageVars PageVars) {
 
 func main() {
 	mux := http.NewServeMux()
-	files := http.FileServer(http.Dir("/public"))
-	mux.Handle("/static/", http.StripPrefix("/static/", files))
+	files := http.FileServer(http.Dir(filepath.FromSlash("/public")))
+	mux.Handle(filepath.FromSlash("/static/"), http.StripPrefix(filepath.FromSlash("/static/"), files))
 	server := http.Server{
 		Addr:    "127.0.0.1:8080",
 		Handler: mux,
